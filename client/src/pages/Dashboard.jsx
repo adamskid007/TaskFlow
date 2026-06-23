@@ -113,7 +113,7 @@ if (loading) {
   return (
     <div className="loading-container">
       <div className="spinner"></div>
-      <p>Loading tasks...</p>
+      <p>Loading Dashboard...</p>
     </div>
   );
 }
