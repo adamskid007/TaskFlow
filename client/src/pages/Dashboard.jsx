@@ -8,6 +8,7 @@ import StatsCards from "../components/dashboard/StatsCards";
 import { toast } from "react-toastify";
 import Sidebar from "../components/layout/Sidebar";
 
+
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -108,9 +109,14 @@ function Dashboard() {
     const due = new Date(task.dueDate);
     return (due.toDateString() === today.toDateString());
   }).length
-  if (loading) {
-  return <p>Loading...</p>;
-  }
+if (loading) {
+  return (
+    <div className="loading-container">
+      <div className="spinner"></div>
+      <p>Loading tasks...</p>
+    </div>
+  );
+}
   return (
     <div className="app-layout">
       <Sidebar />

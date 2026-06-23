@@ -148,28 +148,6 @@ body.dark .navbar {
   margin-bottom: 25px;
 }
 
-/* .filter-bar{
-  display: flex;
-
-  gap: 5px;
-
-  margin-bottom: 15px;
-
-  flex-wrap: wrap;
-
-}
-.filter-bar input{
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  flex: 2;
-}
-.filter-bar select{
-    padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  flex: 1;
-} */
 .task-form {
   background: white;
 
@@ -392,4 +370,40 @@ body.dark .tasks-header p {
       background: white;
         border-radius: 12px;
         padding: 20px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #2563eb;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container p {
+  margin-top: 15px;
+  font-weight: 500;
 }

@@ -11,6 +11,7 @@ function Login() {
     email: "",
     password: ""
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) =>{
@@ -23,6 +24,7 @@ function Login() {
     e.preventDefault()
     try {
       setError("")
+      setLoading(true);
       const data = await login(formData);
 
       localStorage.setItem("token", data.token);
@@ -33,6 +35,8 @@ function Login() {
 
     } catch (err) {
       setError(err?.response?.data?.message)
+    } finally {
+      setLoading(false);
     }
   }
   return (
@@ -54,7 +58,7 @@ function Login() {
                 <h1>Login</h1>
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} />
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-                <button type="submit" className="auth-btn">Login</button>
+                <button type="submit" className="auth-btn" disabled={loading}>{loading ? "Logging in ..." :"Login"}</button>
 
                 {error && <p>{error}</p>}
               </form>

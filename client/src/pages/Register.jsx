@@ -8,18 +8,22 @@ function Register() {
     name: "",
     email: "",
     password: ""
-  })
+  });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try {
-      setError("")
+      setLoading(true);
+      setError("");
       const data = await register(formData)
       console.log(data);
      navigate("/login")
       
     } catch (err) {
       setError(err?.response?.data?.message || "Registration Failed");
+    }finally{
+      setLoading(false)
     }
   }
   return (
@@ -39,7 +43,7 @@ function Register() {
           <input type="text" name={formData.name} placeholder="Enter username..." onChange={(e) =>{ setFormData({...formData, name:e.target.value})}}/>
           <input type="email" name={formData.email} placeholder="Enter Email..." onChange={(e) =>{ setFormData({...formData, email:e.target.value})}}/>
           <input type="password" name={formData.password} placeholder="Enter Password..." onChange={(e) =>{ setFormData({...formData, password:e.target.value})}}/>
-          <button type="submit" className="auth-btn">Register</button>
+          <button type="submit" className="auth-btn" disabled={loading}>{loading ? "Creating Account..." : "Register"}</button>
 
           {error && <p> {error}</p>}
         </form>
