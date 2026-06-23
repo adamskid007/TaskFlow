@@ -86,8 +86,13 @@ function Tasks () {
    return(matchesSearch && matchesStatus && matchesPriority);
   });
       if (loading) {
-        return <p>Loading...</p>;
-        }
+  return (
+    <div className="loading-container">
+      <div className="spinner"></div>
+      <p>Loading tasks...</p>
+    </div>
+  );
+}
     return(
         <div className="app-layout">
             <Sidebar />
